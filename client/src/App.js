@@ -1,12 +1,11 @@
-import React from 'react';
-import './App.css';
+import React from "react";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-
+    <div>
+        <div>Welcome to the MERN Project Template</div>
     </div>
   );
-}
+};
 
 export default App;
