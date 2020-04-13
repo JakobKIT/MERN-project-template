@@ -154,3 +154,22 @@ exports.registerUser = async (req, res) => {
     });
   }
 };
+
+// @route   GET api/auth/user
+// @desc    Get user data
+// @access  Private
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+
+    return res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: 'Server Error',
+    });
+  }
+};
