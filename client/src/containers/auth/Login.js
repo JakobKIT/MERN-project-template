@@ -18,6 +18,7 @@ const LoginContainer = (
               type="text"
               className="form-control"
               id="user"
+              name="user"
               aria-describedby="userHelp"
               onChange={onChange}
             />
@@ -33,6 +34,7 @@ const LoginContainer = (
               type="password"
               className="form-control"
               id="password"
+              name="password"
               onChange={onChange}
             />
           </div>

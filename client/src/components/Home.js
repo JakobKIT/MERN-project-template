@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import LoginContainer from '../containers/auth/Login';
 import RegisterContainer from '../containers/auth/Register';
-import { login } from '../actions/authActions';
+import { login, register } from '../actions/authActions';
+import { validateEmail } from '../utils/Validations';
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLogin: true,
+      user: '',
       userName: '',
       email: '',
       password: '',
@@ -22,6 +24,7 @@ export class Home extends Component {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     onLogin: PropTypes.func.isRequired,
+    onRegister: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
@@ -44,10 +47,24 @@ export class Home extends Component {
   }
 
   login() {
-    this.props.onLogin({
-      email: 'test@example.com',
-      password: 'Start123!'
-    });
+    const { user, password } = this.state;
+    const loginUser = {
+      userName: validateEmail(user) ? '' : user,
+      email: validateEmail(user) ? user : '',
+      password,
+    }
+    this.props.onLogin(loginUser);
+  }
+
+  register() {
+    const { userName, email, password, password2 } = this.state;
+    const newUser = {
+      userName,
+      email,
+      password,
+      password2,
+    }
+    this.props.onRegister(newUser);
   }
 
   render() {
@@ -84,6 +101,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onLogin(user) {
     dispatch(login(user));
+  },
+  onRegister(newUser) {
+    dispatch(register(user));
   },
 });
 

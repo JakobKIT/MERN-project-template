@@ -9,22 +9,29 @@ const RegisterContainer = (
             MERN Stack Template Project
           </h2>
         </div>
-        <div className="container-fluid border pb-5 pt-3 rounded-bottom">
+        <div className="container-fluid border pb-3 pt-3 rounded-bottom">
           <div className="form-group">
-            <label htmlFor="user">
-              Username or Email
+            <label htmlFor="userName">
+              Username
             </label>
             <input
               type="text"
               className="form-control"
-              id="user"
-              aria-describedby="userHelp"
+              id="userName"
               onChange={onChange}
             />
-            <small id="userHelp" className="form-text text-muted">
-              You can use either your email or your username.
-            </small>
           </div>
+          <div className="form-group">
+            <label htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              onChange={onChange}
+            />
+          </div>          
           <div className="form-group">
             <label htmlFor="password">
               Password
@@ -36,12 +43,23 @@ const RegisterContainer = (
               onChange={onChange}
             />
           </div>
+          <div className="form-group">
+            <label htmlFor="password2">
+              Repeat the Password
+            </label>
+            <input 
+              type="password"
+              className="form-control"
+              id="password2"
+              onChange={onChange}
+            />
+          </div>          
           <div className="row justify-content-center">
             <button 
               className="btn btn-success" 
               onClick={formSubmitted}
             >Register</button>
-            </div>
+          </div>
         </div>
       </form>
     </div>

@@ -36,11 +36,12 @@ export const loadUser = () => async (dispatch, getState) => {
 };
 
 // Login a user
-export const login = ({ email, password }) => async (dispatch, getState) => {
+export const login = ({ email, userName, password }) => async (dispatch, getState) => {
   try {
     
     const body = JSON.stringify({
       email,
+      userName,
       password
     });
 
@@ -68,6 +69,28 @@ export const login = ({ email, password }) => async (dispatch, getState) => {
     });
   }
 };
+
+export const register = ({
+  username,
+  email,
+  password,
+  password2
+}) => async (dispatch, getState) => {
+  try {
+    
+  } catch (err) {
+    dispatch(
+      returnErrors(
+        err.response.data.error,
+        err.response.status,
+        'REGISTER_FAIL'
+        )
+      );
+    dispatch({
+      type: REGISTER_FAIL
+    });
+  }
+}
 
 /*
   HELPER METHODS

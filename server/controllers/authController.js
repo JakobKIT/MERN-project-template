@@ -16,12 +16,15 @@ exports.validateUser = async (req, res) => {
     });
   }
   try {
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({
-        success: false,
-        error: 'User does not exist',
-      });
+      user = await User.findOne({ userName });
+      if (!user) {
+        return res.status(400).json({
+          success: false,
+          error: 'User does not exist',
+        });
+      }
     }
 
     // Validate password
