@@ -9,7 +9,7 @@ exports.validateUser = async (req, res) => {
   const { userName, email, password } = req.body;
 
   // Simple validation
-  if ((!userName || !email) || !password) {
+  if ((!userName && !email) || !password) {
     return res.status(400).json({
       success: false,
       error: 'Please enter all fields',
