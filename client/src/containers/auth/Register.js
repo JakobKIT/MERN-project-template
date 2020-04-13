@@ -18,6 +18,7 @@ const RegisterContainer = (
               type="text"
               className="form-control"
               id="userName"
+              name="userName"
               onChange={onChange}
             />
           </div>
@@ -29,6 +30,7 @@ const RegisterContainer = (
               type="email"
               className="form-control"
               id="email"
+              name="email"
               onChange={onChange}
             />
           </div>          
@@ -40,6 +42,7 @@ const RegisterContainer = (
               type="password"
               className="form-control"
               id="password"
+              name="password"
               onChange={onChange}
             />
           </div>
@@ -51,6 +54,7 @@ const RegisterContainer = (
               type="password"
               className="form-control"
               id="password2"
+              name="password2"
               onChange={onChange}
             />
           </div>          

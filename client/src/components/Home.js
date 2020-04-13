@@ -42,11 +42,13 @@ export class Home extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  switchForm(event) {
+  switchForm() {
     this.setState({ isLogin: !this.state.isLogin });
   }
 
-  login() {
+  login(event) {
+    event.preventDefault();
+
     const { user, password } = this.state;
     const loginUser = {
       userName: validateEmail(user) ? '' : user,
@@ -56,7 +58,9 @@ export class Home extends Component {
     this.props.onLogin(loginUser);
   }
 
-  register() {
+  register(event) {
+    event.preventDefault();
+
     const { userName, email, password, password2 } = this.state;
     const newUser = {
       userName,
@@ -77,7 +81,7 @@ export class Home extends Component {
           /> 
           : <RegisterContainer
           onChange={this.onChange.bind(this)}
-          formSubmitted={this.login.bind(this)}
+          formSubmitted={this.register.bind(this)}
           />
         }
         <div className="container">
@@ -103,7 +107,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(login(user));
   },
   onRegister(newUser) {
-    dispatch(register(user));
+    dispatch(register(newUser));
   },
 });
 

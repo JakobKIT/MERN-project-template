@@ -71,13 +71,29 @@ export const login = ({ email, userName, password }) => async (dispatch, getStat
 };
 
 export const register = ({
-  username,
+  userName,
   email,
   password,
   password2
 }) => async (dispatch, getState) => {
   try {
-    
+    const body = JSON.stringify({
+      userName,
+      email,
+      password,
+      password2
+    });
+
+    const res = await axios.post('/api/auth/register', body, headerConfig(getState));
+    const payload = {
+      token: res.data.token,
+      user: res.data.data,
+    };
+
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: payload,
+    });
   } catch (err) {
     dispatch(
       returnErrors(

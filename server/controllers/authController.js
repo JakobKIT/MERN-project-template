@@ -73,18 +73,30 @@ exports.validateUser = async (req, res) => {
 // @desc    Register new user
 // @access  Public
 exports.registerUser = async (req, res) => {
-  const { userName, email, password } = req.body;
+  const { userName,
+    email,
+    password,
+    password2,
+  } = req.body;
 
   // Simple validation
-  if (!userName || !email || !password) {
+  if (!userName || !email || !password || !password2) {
     return res.status(400).json({
       success: false,
       error: 'Please enter all fields',
     });
   }
+
+  if (password !== password2) {
+    return res.status(400).json({
+      success: false,
+      error: 'Passwords have to be identical',
+    });
+  }
   try {
-    const user = await User.findOne({ email });
-    if (user) {
+    const userEmail = await User.findOne({ email });
+    const userUserName = await User.findOne({ userName });
+    if (userEmail || userUserName) {
       return res.status(400).json({
         success: false,
         error: 'User already exists',
@@ -121,7 +133,7 @@ exports.registerUser = async (req, res) => {
       });
     }
     const token = jwt.sign(
-      // eslint-disable-next-line no-underscore-dangle
+      // eslint-disable-next-line
       { id: createdUser._id },
       process.env.JWT_SECRET,
       { expiresIn: 3600 },
@@ -137,7 +149,7 @@ exports.registerUser = async (req, res) => {
       success: true,
       token,
       data: {
-        // eslint-disable-next-line no-underscore-dangle
+        // eslint-disable-next-line
         id: createdUser._id,
         name: createdUser.userName,
         email: createdUser.email,
