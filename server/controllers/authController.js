@@ -73,7 +73,8 @@ exports.validateUser = async (req, res) => {
 // @desc    Register new user
 // @access  Public
 exports.registerUser = async (req, res) => {
-  const { userName,
+  const {
+    userName,
     email,
     password,
     password2,

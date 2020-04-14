@@ -15,7 +15,7 @@ class AuthRoute extends Component {
   render() {
     const { type, auth } = this.props;
 
-    if (type === 'guest' && auth.isAuthenticated) return <Redirect to="/user" />;
+    if (type === 'guest' && auth.isAuthenticated) return <Redirect to="/post" />;
     if (type === 'private' && !auth.isAuthenticated) return <Redirect to="/" />;
 
     return <Route {...this.props} />;

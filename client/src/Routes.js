@@ -6,6 +6,7 @@ import routes from './constants/routes.json';
 import AuthRoute from './utils/AuthRoute';
 import App from './containers/App';
 import HomePage from './components/Home';
+import PostPage from './components/Post';
 
 export function Routes(props) {
   useEffect(() => {
@@ -15,6 +16,7 @@ export function Routes(props) {
   return (
     <App>
       <Switch>
+        <AuthRoute path={routes.POST} type="private" component={PostPage} />
         <AuthRoute path={routes.HOME} type="guest" component={HomePage} />
       </Switch>
     </App>
