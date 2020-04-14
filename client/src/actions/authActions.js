@@ -16,7 +16,7 @@ export const loadUser = () => async (dispatch, getState) => {
   try {
     dispatch(setUserLoading());
 
-    const res = await axios.get('/api/auth', headerConfig(getState));
+    const res = await axios.get('/api/auth/user', headerConfig(getState));
 
     dispatch({
       type: USER_LOADED,
