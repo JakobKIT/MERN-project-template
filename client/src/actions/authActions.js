@@ -70,6 +70,7 @@ export const login = ({ email, userName, password }) => async (dispatch, getStat
   }
 };
 
+// Register a new user
 export const register = ({
   userName,
   email,
