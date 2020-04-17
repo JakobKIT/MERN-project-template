@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import LoginContainer from '../containers/auth/Login';
-import RegisterContainer from '../containers/auth/Register';
-import { login, register } from '../actions/authActions';
-import { validateEmail } from '../utils/Validations';
+import PostNavigationContainer from '../containers/post/PostNavigation';
+import PostListContainer from '../containers/post/PostList';
 
 export class Post extends Component {
   constructor(props) {
@@ -15,9 +13,7 @@ export class Post extends Component {
   }
 
   static propTypes = {
-    error: PropTypes.object.isRequired,
-    onLogin: PropTypes.func.isRequired,
-    onRegister: PropTypes.func.isRequired,
+    error: PropTypes.object.isRequired
   };
 
   componentDidUpdate(prevProps) {
@@ -33,9 +29,12 @@ export class Post extends Component {
 
   render() {
     return (
-      <div className="container">
-        POSTS HERE
-      </div>
+      <>
+        <PostNavigationContainer />
+        <div className="container-fluid">
+          <PostListContainer />
+        </div>
+      </>
     );
   }
 }
