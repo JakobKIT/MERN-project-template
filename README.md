@@ -8,7 +8,7 @@ You can use only the client (React) or the server (NodeJS) section independently
 ## Prerequisites
 For this project to run you need to have a mongoDB connection.
 Either a local MongoDB or hosted on something like AWS, Azure etc.
-Additionally you need [git](https://git-scm.com/), [NodeJS](https://nodejs.org/en/) and npm installed.
+Additionally you need [git](https://git-scm.com/), [NodeJS](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed.
 
 ## Setup
 
@@ -36,7 +36,7 @@ To run the project in Development mode just use the following command:
 $ npm start dev
 ```
 This will start the NodeJS server aswell as the [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server) for the client.
-To do that I used [concurrently](https://www.npmjs.com/package/concurrently)
+To do that I used [concurrently](https://www.npmjs.com/package/concurrently).
 
 ### Server (NodeJS)
 
@@ -46,6 +46,10 @@ Furthermore there are two seeding scripts that create some test data und a user 
 The user information will be displayed in your terminal too.
 
 ### Client (React)
+
+The client side is build using [React](https://reactjs.org/) and [Redux](https://redux.js.org/).
+For bundling the files in development aswell as in production mode [webpack](https://webpack.js.org/) is used.
+For backwards compatibility [babel](https://babeljs.io/) is used aswell.
 
 ## License
 
