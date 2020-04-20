@@ -1,5 +1,5 @@
-import * as actions from '../../actions/errorActions';
-import { GET_ERRORS, CLEAR_ERRORS } from '../../constants/types';
+import * as actions from '../../src/actions/errorActions';
+import { GET_ERRORS, CLEAR_ERRORS } from '../../src/constants/types';
 
 describe('error actions', () => {
   it('should create an action to return errors', () => {

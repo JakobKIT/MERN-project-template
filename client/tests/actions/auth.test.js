@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import * as actions from '../../actions/authActions';
+import * as actions from '../../src/actions/authActions';
 import {
   USER_LOADED,
   USER_LOADING,
@@ -12,7 +12,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL
-} from '../../constants/types';
+} from '../../src/constants/types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

@@ -1,4 +1,4 @@
-import reducer from '../../reducers/authReducer';
+import reducer from '../../src/reducers/authReducer';
 import {
   USER_LOADED,
   USER_LOADING,
@@ -8,7 +8,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL
-} from '../../constants/types';
+} from '../../src/constants/types';
 
 describe('auth Reducer', () => {
   it('should return the intial state', () => {

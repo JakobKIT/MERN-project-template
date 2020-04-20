@@ -1,5 +1,5 @@
-import reducer from '../../reducers/errorReducer';
-import { GET_ERRORS, CLEAR_ERRORS } from '../../constants/types';
+import reducer from '../../src/reducers/errorReducer';
+import { GET_ERRORS, CLEAR_ERRORS } from '../../src/constants/types';
 
 describe('error Reducer', () => {
   it('should return the intial state', () => {
