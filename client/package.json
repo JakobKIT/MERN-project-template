@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
-    "build": "webpack --config ./webpack/webpack.prod.js"
+    "build": "webpack --config ./webpack/webpack.prod.js",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "keywords": [
     "Autoprefixer",
@@ -20,6 +22,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "autoprefixer": "^9.7.6",
+    "babel-jest": "^25.4.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
@@ -34,6 +37,7 @@
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
+    "jest": "^25.4.0",
     "postcss-loader": "^3.0.0",
     "redux-logger": "^3.0.6",
     "robotstxt-webpack-plugin": "^7.0.0",
