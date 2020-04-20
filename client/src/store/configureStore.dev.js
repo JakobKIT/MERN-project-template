@@ -8,7 +8,6 @@ import createRootReducer from '../reducers';
 const history = createHashHistory();
 
 const rootReducer = createRootReducer(history);
-
 const configureStore = (initialState) => {
   // Store all middleware in this array
   const middleware = [];
