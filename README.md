@@ -18,10 +18,10 @@ $ git clone https://github.com/JakobKIT/MERN-project-template.git
 ```
 
 After cloning the project you need to install all dependencies.
-You need to do this in the main folder and in the client folder!
 
 ```bash
-$ npm install
+$ npm install 
+$ npm run client-install
 ```
 
 Last but not least create 2 .env files. I created a template in the folder.

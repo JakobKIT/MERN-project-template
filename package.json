@@ -7,6 +7,7 @@
     "start": "cross-env NODE_ENV=production node server/server.js",
     "server": "cross-env NODE_ENV=development nodemon server/server.js",
     "client": "npm start --prefix client",
+    "client-install": "cd client && npm install",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
@@ -14,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "client": "file:client",
     "colors": "^1.4.0",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
