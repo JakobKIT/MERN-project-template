@@ -6,7 +6,7 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
 } from '../constants/types';
 
 const initialState = {
@@ -17,7 +17,7 @@ const initialState = {
 };
 
 export default function auth(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case USER_LOADING:
       return {
         ...state,

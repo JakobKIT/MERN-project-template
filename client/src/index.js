@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { configureStore, history } from './store/configureStore';
 import Root from './containers/Root';
 import './index.scss';
@@ -10,5 +10,5 @@ ReactDOM.render(
   <React.StrictMode>
     <Root store={store} history={history} />
   </React.StrictMode>,
-  document.querySelector("#root")
+  document.querySelector('#root'),
 );

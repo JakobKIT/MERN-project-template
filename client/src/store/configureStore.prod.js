@@ -9,8 +9,6 @@ const rootReducer = createRootReducer(history);
 const router = routerMiddleware(history);
 const enhancer = applyMiddleware(thunk, router);
 
-const configureStore = (initialState) => {
-  return createStore(rootReducer, initialState, enhancer);
-}
+const configureStore = (initialState) => createStore(rootReducer, initialState, enhancer);
 
 export default { configureStore, history };

@@ -35,8 +35,8 @@ const configureStore = (initialState) => {
   // eslint-disable
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        actionCreators
-      })
+      actionCreators,
+    })
     : compose;
 
   // Add logger as the last middleware See here: https://www.npmjs.com/package/redux-logger
@@ -50,6 +50,6 @@ const configureStore = (initialState) => {
   const store = createStore(rootReducer, initialState, enhancer);
 
   return store;
-}
+};
 
 export default { configureStore, history };

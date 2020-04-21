@@ -12,7 +12,7 @@ export function Routes(props) {
   useEffect(() => {
     props.onLoadUser();
   }, []);
-  
+
   return (
     <App>
       <Switch>
