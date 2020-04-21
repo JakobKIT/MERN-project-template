@@ -12,17 +12,16 @@ describe('error actions', () => {
       payload: {
         msg,
         status,
-        id
-      }
+        id,
+      },
     };
     expect(actions.returnErrors(msg, status, id)).toEqual(expectedAction);
-  })
+  });
 
   it('should create an action to clear errors', () => {
     const expectedAction = {
-      type: CLEAR_ERRORS
+      type: CLEAR_ERRORS,
     };
     expect(actions.clearErrors()).toEqual(expectedAction);
-  })
-  
-})
+  });
+});

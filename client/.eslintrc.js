@@ -2,14 +2,16 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true
   },
   extends: [
     'plugin:react/recommended',
+    'plugin:jest/recommended',
     'airbnb',
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
     ecmaFeatures: {
@@ -20,6 +22,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'jest'
   ],
   rules: {
   },
