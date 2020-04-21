@@ -8,7 +8,7 @@
     "server": "cross-env NODE_ENV=development nodemon server/server.js",
     "client": "npm start --prefix client",
     "client-install": "cd client && npm install",
-    "client-test": "npm test --prefix client",
+    "client-test": "npm run test:coverage --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
