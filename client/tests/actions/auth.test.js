@@ -6,33 +6,29 @@ import * as actions from '../../src/actions/authActions';
 import {
   USER_LOADED,
   USER_LOADING,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
 } from '../../src/constants/types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-axios.defaults.baseURL = 'http://localhost:5000';
 const mock = new MockAdapter(axios);
-
-const mockData = {
-  _id: 'mockID',
-  userName: 'test',
-  email: 'test@example.com',
-  createdAt: '1',
-  updatedAt: '1'
-};
 
 describe('async auth actions', () => {
   afterEach(() => {
     mock.reset();
   })
 
-  it('gets a user with USER_LOADED', () => {
+  it('gets a user with USER_LOADED success', () => {
+    const mockData = {
+      _id: 'mockID',
+      userName: 'test',
+      email: 'test@example.com',
+      createdAt: '1',
+      updatedAt: '1'
+    };
+
     mock.onGet('/api/auth/user').replyOnce(200, {
       success: true,
       data: mockData
@@ -51,5 +47,83 @@ describe('async auth actions', () => {
     return store.dispatch(actions.loadUser()).then(() => {
       expect(store.getActions()).toEqual(expectedActions) 
     })
+  })
+
+  it('logs in a user with LOGIN_SUCCESS', () => {
+    const email = 'example@example.com';
+    const password = '12345';
+
+    const mockData = {
+      id: 'mockID',
+      userName: 'test',
+      email: 'test@example.com',
+    };
+
+    mock.onPost('/api/auth').replyOnce(201, {
+      success: true,
+      token: 'testToken',
+      data: mockData
+    });
+
+    const expectedActions = [
+      { 
+        type: LOGIN_SUCCESS,
+        payload: {
+          token: 'testToken',
+          user: mockData
+        }
+      },
+    ];
+
+    const store = mockStore({auth: {
+      token: null
+    }});
+
+    return store.dispatch(actions.login(email, password)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions) 
+    });
+  })
+
+  it('registers a user with REGISTER_SUCCESS', () => {
+    const email = 'example@example.com';
+    const userName = 'TestUser';
+    const password = '12345';
+
+    const mockData = {
+      id: 'mockID',
+      userName: 'TestUser',
+      email: 'example@example.com',
+    };
+
+    mock.onPost('/api/auth/register').replyOnce(201, {
+      success: true,
+      token: 'testToken',
+      data: mockData
+    });
+
+    const expectedActions = [
+      { 
+        type: REGISTER_SUCCESS,
+        payload: {
+          token: 'testToken',
+          user: mockData
+        }
+      },
+    ];
+
+    const store = mockStore({auth: {
+      token: null
+    }});
+
+    return store.dispatch(actions.register(email, userName, password, password)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions) 
+    });
+  })  
+
+  it('sets the USER_LOADING', () => {
+    const expectedAction = {
+      type: USER_LOADING
+    }
+    expect(actions.setUserLoading()).toEqual(expectedAction);
   })
 })

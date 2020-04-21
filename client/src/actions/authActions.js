@@ -29,7 +29,7 @@ export const loadUser = () => async (dispatch, getState) => {
         )
       );
     dispatch({
-      type:AUTH_ERROR
+      type: AUTH_ERROR
     });
   }
 };
@@ -85,6 +85,7 @@ export const register = ({
     });
 
     const res = await axios.post('/api/auth/register', body, headerConfig(getState));
+
     const payload = {
       token: res.data.token,
       user: res.data.data,
